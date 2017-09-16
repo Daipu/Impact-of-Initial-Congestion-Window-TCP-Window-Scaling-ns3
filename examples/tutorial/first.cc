@@ -35,7 +35,7 @@ main (int argc, char *argv[])
   LogComponentEnable ("UdpEchoServerApplication", LOG_LEVEL_INFO);
 
   NodeContainer nodes;
-  nodes.Create (2);
+  nodes.Create (3);
 
   PointToPointHelper pointToPoint;
   pointToPoint.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));
@@ -54,19 +54,47 @@ main (int argc, char *argv[])
 
   UdpEchoServerHelper echoServer (9);
 
-  ApplicationContainer serverApps = echoServer.Install (nodes.Get (1));
-  serverApps.Start (Seconds (1.0));
-  serverApps.Stop (Seconds (10.0));
+  ApplicationContainer serverApps[3];
+  serverApps[0] = echoServer.Install (nodes.Get (0));
+  serverApps[0].Start (Seconds (1.0));
+  serverApps[0].Stop (Seconds (10.0));
+
+  serverApps[1] = echoServer.Install (nodes.Get (1));
+  serverApps[1].Start (Seconds (1.0));
+  serverApps[1].Stop (Seconds (10.0));
+
+  serverApps[2] = echoServer.Install (nodes.Get (2));
+  serverApps[2].Start (Seconds (1.0));
+  serverApps[2].Stop (Seconds (10.0));
 
   UdpEchoClientHelper echoClient (interfaces.GetAddress (1), 9);
   echoClient.SetAttribute ("MaxPackets", UintegerValue (1));
   echoClient.SetAttribute ("Interval", TimeValue (Seconds (1.0)));
   echoClient.SetAttribute ("PacketSize", UintegerValue (1024));
 
-  ApplicationContainer clientApps = echoClient.Install (nodes.Get (0));
-  clientApps.Start (Seconds (2.0));
-  clientApps.Stop (Seconds (10.0));
+  /*UdpEchoClientHelper echoClient (interfaces.GetAddress (1), 9);
+  echoClient.SetAttribute ("MaxPackets", UintegerValue (1));
+  echoClient.SetAttribute ("Interval", TimeValue (Seconds (1.0)));
+  echoClient.SetAttribute ("PacketSize", UintegerValue (1024));
 
+  UdpEchoClientHelper echoClient (interfaces.GetAddress (2), 9);
+  echoClient.SetAttribute ("MaxPackets", UintegerValue (1));
+  echoClient.SetAttribute ("Interval", TimeValue (Seconds (1.0)));
+  echoClient.SetAttribute ("PacketSize", UintegerValue (1024));*/
+
+  ApplicationContainer clientApps[3];
+  clientApps[0] = echoClient.Install (nodes.Get (0));
+  clientApps[0].Start (Seconds (2.0));
+  clientApps[0].Stop (Seconds (10.0));
+
+  /*clientApps[1] = echoClient.Install (nodes.Get (1));
+  clientApps[1].Start (Seconds (2.0));
+  clientApps[1].Stop (Seconds (10.0));
+
+  clientApps[2] = echoClient.Install (nodes.Get (2));
+  clientApps[2].Start (Seconds (2.0));
+  clientApps[2].Stop (Seconds (10.0));*/
+  
   Simulator::Run ();
   Simulator::Destroy ();
   return 0;
