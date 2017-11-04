@@ -1,13 +1,13 @@
-# project ns (3-dev) configured on Sat Sep  2 10:43:13 2017 by
+# project ns (3-dev) configured on Tue Oct 31 17:30:08 2017 by
 # waf 1.8.19 (abi 98, python 2070cf0 on linux2)
-# using ./waf configure --enable-examples --enable-tests
+# using ./waf -d optimized configure
 #
 ----------------------------------------
 Setting top to
-/home/arnab/ns-3-dev
+/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3
 ----------------------------------------
 Setting out to
-/home/arnab/ns-3-dev/build
+/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build
 ----------------------------------------
 Checking for 'gcc' (C compiler)
 find program=['gcc', 'cc'] paths=['/home/arnab/bin', '/home/arnab/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='CC' -> ['/usr/bin/gcc']
@@ -521,14 +521,23 @@ out: #define __SSP_STRONG__ 3
 
 (tool ar is already loaded, skipping)
 /usr/bin/g++
+---------------------------------------------------
+Checking for compilation flag -march=native support
+==>
+int main() { return 0; }
+<==
+[1/1] Compiling [32mbuild/.conf_check_4c0ae67cda1989fcf484adf277fe048f/test.cpp[0m
+
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_4c0ae67cda1989fcf484adf277fe048f/testbuild/test.cpp.1.o']
+ok
 ------------------------------------------------------
 Checking for compilation flag -Wl,--soname=foo support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_058898a2ee7cc1fb706409491fe11e5a/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_4c0ae67cda1989fcf484adf277fe048f/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-Wl,--soname=foo', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_058898a2ee7cc1fb706409491fe11e5a/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-Wl,--soname=foo', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_4c0ae67cda1989fcf484adf277fe048f/testbuild/test.cpp.1.o']
 ok
 ------------------------------------------------------
 Checking for program 'python'
@@ -601,7 +610,7 @@ LDVERSION = ''
 python-config
 not found
 find program=['/usr/bin/python-config', 'python2.7-config', 'python-config-2.7', 'python2.7m-config'] paths=['/home/arnab/bin', '/home/arnab/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='PYTHON_CONFIG' -> None
-from /home/arnab/ns-3-dev/bindings/python: Could not find the program ['/usr/bin/python-config', 'python2.7-config', 'python-config-2.7', 'python2.7m-config']
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/bindings/python: Could not find the program ['/usr/bin/python-config', 'python2.7-config', 'python-config-2.7', 'python2.7m-config']
 
 
 # try again with -L$python_LIBDIR: ['/usr/lib']
@@ -616,27 +625,27 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_e401988bd3ce2a0b4f5ac1259782a9b9/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_644700deb0254f9345dca57f00dc0045/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DNDEBUG', '-D_FORTIFY_SOURCE=2', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_e401988bd3ce2a0b4f5ac1259782a9b9/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_e401988bd3ce2a0b4f5ac1259782a9b9/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DNDEBUG', '-D_FORTIFY_SOURCE=2', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_644700deb0254f9345dca57f00dc0045/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_644700deb0254f9345dca57f00dc0045/testbuild/testprog[0m
 
-['/usr/bin/g++', '-Wl,-Bsymbolic-functions', '-Wl,-z,relro', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_e401988bd3ce2a0b4f5ac1259782a9b9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib', '-lpython2.7']
+['/usr/bin/g++', '-Wl,-Bsymbolic-functions', '-Wl,-z,relro', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_644700deb0254f9345dca57f00dc0045/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib', '-lpython2.7']
 err: /usr/bin/ld: cannot find -lpython2.7
 collect2: error: ld returned 1 exit status
 
-from /home/arnab/ns-3-dev/bindings/python: Test does not build: Traceback (most recent call last):
-  File "/home/arnab/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/bindings/python: Test does not build: Traceback (most recent call last):
+  File "/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
     bld.compile()
-  File "/home/arnab/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+  File "/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140164527527632: cxxprogram test.cpp.1.o -> testprog}
-['/usr/bin/g++', '-Wl,-Bsymbolic-functions', '-Wl,-z,relro', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_e401988bd3ce2a0b4f5ac1259782a9b9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib', '-lpython2.7']
+	{task 140049380862928: cxxprogram test.cpp.1.o -> testprog}
+['/usr/bin/g++', '-Wl,-Bsymbolic-functions', '-Wl,-z,relro', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_644700deb0254f9345dca57f00dc0045/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib', '-lpython2.7']
 
 not found
-from /home/arnab/ns-3-dev/bindings/python: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/bindings/python: The configuration failed
 
 
 # try again with -L$python_LIBPL (some systems don't install the python library in $prefix/lib)
@@ -651,12 +660,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_b164e0d9e606b5dd66a72d4dd160fc39/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_2c82113623055c02148c64dadd75afe8/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DNDEBUG', '-D_FORTIFY_SOURCE=2', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_b164e0d9e606b5dd66a72d4dd160fc39/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_b164e0d9e606b5dd66a72d4dd160fc39/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DNDEBUG', '-D_FORTIFY_SOURCE=2', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_2c82113623055c02148c64dadd75afe8/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_2c82113623055c02148c64dadd75afe8/testbuild/testprog[0m
 
-['/usr/bin/g++', '-Wl,-Bsymbolic-functions', '-Wl,-z,relro', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_b164e0d9e606b5dd66a72d4dd160fc39/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-lpython2.7']
+['/usr/bin/g++', '-Wl,-Bsymbolic-functions', '-Wl,-z,relro', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_2c82113623055c02148c64dadd75afe8/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib/python2.7/config-x86_64-linux-gnu', '-lpython2.7']
 yes
 Include path for Python extensions (found via distutils module): '/usr/include/python2.7'
 
@@ -682,32 +691,32 @@ int main(int argc, char **argv)
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_72fcd3cf49e04505ab9545418814185f/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_346bda3653b4172a366e5d66134cb5bf/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-fno-strict-aliasing', '-I/usr/include/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DNDEBUG', '-D_FORTIFY_SOURCE=2', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_72fcd3cf49e04505ab9545418814185f/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-fno-strict-aliasing', '-I/usr/include/python2.7', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DNDEBUG', '-D_FORTIFY_SOURCE=2', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_346bda3653b4172a366e5d66134cb5bf/testbuild/test.cpp.1.o']
 err: ../test.cpp:2:20: fatal error: Python.h: No such file or directory
 compilation terminated.
 
-from /home/arnab/ns-3-dev/bindings/python: Test does not build: Traceback (most recent call last):
-  File "/home/arnab/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/bindings/python: Test does not build: Traceback (most recent call last):
+  File "/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
     bld.compile()
-  File "/home/arnab/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+  File "/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140164527527120: cxx test.cpp -> test.cpp.1.o}
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-fno-strict-aliasing', '-I/usr/include/python2.7', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DNDEBUG', '-D_FORTIFY_SOURCE=2', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_72fcd3cf49e04505ab9545418814185f/testbuild/test.cpp.1.o']
+	{task 140049380362832: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-fno-strict-aliasing', '-I/usr/include/python2.7', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DPYTHONDIR="/usr/local/lib/python2.7/dist-packages"', '-DPYTHONARCHDIR="/usr/local/lib/python2.7/dist-packages"', '-DNDEBUG', '-D_FORTIFY_SOURCE=2', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_346bda3653b4172a366e5d66134cb5bf/testbuild/test.cpp.1.o']
 
 Distutils not installed? Broken python installation? Get python-config now!
-from /home/arnab/ns-3-dev/bindings/python: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/bindings/python: The configuration failed
 ------------------------------------------------------
 Checking boost includes
 headers not found, please provide a --boost-includes argument (see help)
-from /home/arnab/ns-3-dev/src: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src: The configuration failed
 ------------------------------------------------------
 Checking boost includes
 headers not found, please provide a --boost-includes argument (see help)
-from /home/arnab/ns-3-dev/src: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src: The configuration failed
 ------------------------------------------------------
 Checking for click location
 not found
@@ -719,12 +728,12 @@ find program=['pkg-config'] paths=['/home/arnab/bin', '/home/arnab/.local/bin', 
 Checking for 'gtk+-2.0' >= 2.12
 ['/usr/bin/pkg-config', '--atleast-version=2.12', 'gtk+-2.0']
 not found
-from /home/arnab/ns-3-dev/src/config-store: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src/config-store: The configuration failed
 ------------------------------------------------------
 Checking for 'libxml-2.0' >= 2.7
 ['/usr/bin/pkg-config', '--atleast-version=2.7', 'libxml-2.0']
 not found
-from /home/arnab/ns-3-dev/src/config-store: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src/config-store: The configuration failed
 ------------------------------------------------------
 Checking for type uint128_t
 ==>
@@ -738,9 +747,9 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_d20396c73276c167b9f822e0a27576d7/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_c8160b5db5f00b3b63a01aef51cba58b/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_d20396c73276c167b9f822e0a27576d7/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_c8160b5db5f00b3b63a01aef51cba58b/testbuild/test.cpp.1.o']
 err: ../test.cpp: In function ‘int main(int, char**)’:
 ../test.cpp:5:7: error: ‘uint128_t’ was not declared in this scope
   if ((uint128_t *) 0) return 0;
@@ -755,18 +764,18 @@ err: ../test.cpp: In function ‘int main(int, char**)’:
   if (sizeof (uint128_t)) return 0;
               ^
 
-from /home/arnab/ns-3-dev/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/arnab/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
     bld.compile()
-  File "/home/arnab/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+  File "/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140164529237584: cxx test.cpp -> test.cpp.1.o}
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_d20396c73276c167b9f822e0a27576d7/testbuild/test.cpp.1.o']
+	{task 140049378972112: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_c8160b5db5f00b3b63a01aef51cba58b/testbuild/test.cpp.1.o']
 
 not found
-from /home/arnab/ns-3-dev/src/core: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src/core: The configuration failed
 ------------------------------------------------------
 Checking for type __uint128_t
 ==>
@@ -780,12 +789,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_d439cae2c7bf31539a0adc8bafbd5acf/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_7e2403afd2f596a5f33fbd999319a658/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_d439cae2c7bf31539a0adc8bafbd5acf/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_d439cae2c7bf31539a0adc8bafbd5acf/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_7e2403afd2f596a5f33fbd999319a658/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_7e2403afd2f596a5f33fbd999319a658/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_d439cae2c7bf31539a0adc8bafbd5acf/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_7e2403afd2f596a5f33fbd999319a658/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking high precision implementation
@@ -801,12 +810,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_5cf6203d2381010752fee6186e305b65/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_1edbadd2c965fb087ca3e016d5730c4b/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_5cf6203d2381010752fee6186e305b65/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_5cf6203d2381010752fee6186e305b65/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_1edbadd2c965fb087ca3e016d5730c4b/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1edbadd2c965fb087ca3e016d5730c4b/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_5cf6203d2381010752fee6186e305b65/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_1edbadd2c965fb087ca3e016d5730c4b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header inttypes.h
@@ -819,12 +828,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_0f90fe93ae0c5be9b4500443c9bf4a6c/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_df89ba26a1ad71628d4b6827b757769a/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_0f90fe93ae0c5be9b4500443c9bf4a6c/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_0f90fe93ae0c5be9b4500443c9bf4a6c/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_df89ba26a1ad71628d4b6827b757769a/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_df89ba26a1ad71628d4b6827b757769a/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_0f90fe93ae0c5be9b4500443c9bf4a6c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_df89ba26a1ad71628d4b6827b757769a/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header sys/inttypes.h
@@ -837,24 +846,24 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_655d386366c527a213b377f648efacdf/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_9c4d76114af67722bc39d061578e0ffa/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_655d386366c527a213b377f648efacdf/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_9c4d76114af67722bc39d061578e0ffa/testbuild/test.cpp.1.o']
 err: ../test.cpp:1:26: fatal error: sys/inttypes.h: No such file or directory
 compilation terminated.
 
-from /home/arnab/ns-3-dev/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/arnab/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
     bld.compile()
-  File "/home/arnab/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+  File "/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140164529277968: cxx test.cpp -> test.cpp.1.o}
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_655d386366c527a213b377f648efacdf/testbuild/test.cpp.1.o']
+	{task 140049379026064: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_9c4d76114af67722bc39d061578e0ffa/testbuild/test.cpp.1.o']
 
 not found
-from /home/arnab/ns-3-dev/src/core: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src/core: The configuration failed
 ------------------------------------------------------
 Checking for header sys/types.h
 ==>
@@ -866,12 +875,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_51cd4b13a0760eb225b69d7e40a5fd36/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_04011ed00861806c99347df26dbf1025/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_51cd4b13a0760eb225b69d7e40a5fd36/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_51cd4b13a0760eb225b69d7e40a5fd36/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_04011ed00861806c99347df26dbf1025/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_04011ed00861806c99347df26dbf1025/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_51cd4b13a0760eb225b69d7e40a5fd36/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_04011ed00861806c99347df26dbf1025/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header sys/stat.h
@@ -884,12 +893,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_544c77fd463907d87a5ef70d851f2dff/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_8dee6a45b7a078a7305fb61076a02f4f/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_544c77fd463907d87a5ef70d851f2dff/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_544c77fd463907d87a5ef70d851f2dff/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_8dee6a45b7a078a7305fb61076a02f4f/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_8dee6a45b7a078a7305fb61076a02f4f/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_544c77fd463907d87a5ef70d851f2dff/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_8dee6a45b7a078a7305fb61076a02f4f/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header dirent.h
@@ -902,12 +911,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_3cd9e601314287ac7591fd3a22a413db/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_fd6c8d01e9656b8a6507d2caf7b6bffd/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_3cd9e601314287ac7591fd3a22a413db/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_3cd9e601314287ac7591fd3a22a413db/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_fd6c8d01e9656b8a6507d2caf7b6bffd/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_fd6c8d01e9656b8a6507d2caf7b6bffd/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_3cd9e601314287ac7591fd3a22a413db/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_fd6c8d01e9656b8a6507d2caf7b6bffd/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header stdlib.h
@@ -920,12 +929,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_35eed911d8aa5f71bc55ad110e6c4747/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_93ce054b6c3ee54d350c7c5ae6b0bae8/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_35eed911d8aa5f71bc55ad110e6c4747/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_35eed911d8aa5f71bc55ad110e6c4747/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_93ce054b6c3ee54d350c7c5ae6b0bae8/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_93ce054b6c3ee54d350c7c5ae6b0bae8/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_35eed911d8aa5f71bc55ad110e6c4747/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_93ce054b6c3ee54d350c7c5ae6b0bae8/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header signal.h
@@ -938,12 +947,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_95a59c08a2777db99b8e9f812dd96eed/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_e1c190d8740e0f054fea9f91a67cd09b/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_95a59c08a2777db99b8e9f812dd96eed/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_95a59c08a2777db99b8e9f812dd96eed/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_e1c190d8740e0f054fea9f91a67cd09b/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_e1c190d8740e0f054fea9f91a67cd09b/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_95a59c08a2777db99b8e9f812dd96eed/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_e1c190d8740e0f054fea9f91a67cd09b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header pthread.h
@@ -958,12 +967,12 @@ int main ()
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_106b6625507a0295a9562c1c512adc9e/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_0dd33946ffdba490e8e0696579cbfa04/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_106b6625507a0295a9562c1c512adc9e/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_106b6625507a0295a9562c1c512adc9e/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_0dd33946ffdba490e8e0696579cbfa04/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_0dd33946ffdba490e8e0696579cbfa04/testbuild/testprog[0m
 
-['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_106b6625507a0295a9562c1c512adc9e/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_0dd33946ffdba490e8e0696579cbfa04/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header stdint.h
@@ -976,12 +985,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_5cf6203d2381010752fee6186e305b65/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_1edbadd2c965fb087ca3e016d5730c4b/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_5cf6203d2381010752fee6186e305b65/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_5cf6203d2381010752fee6186e305b65/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_INTTYPES_H=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_1edbadd2c965fb087ca3e016d5730c4b/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1edbadd2c965fb087ca3e016d5730c4b/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_5cf6203d2381010752fee6186e305b65/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_1edbadd2c965fb087ca3e016d5730c4b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header inttypes.h
@@ -994,12 +1003,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_0f90fe93ae0c5be9b4500443c9bf4a6c/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_df89ba26a1ad71628d4b6827b757769a/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_0f90fe93ae0c5be9b4500443c9bf4a6c/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_0f90fe93ae0c5be9b4500443c9bf4a6c/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_df89ba26a1ad71628d4b6827b757769a/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_df89ba26a1ad71628d4b6827b757769a/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_0f90fe93ae0c5be9b4500443c9bf4a6c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_df89ba26a1ad71628d4b6827b757769a/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header sys/inttypes.h
@@ -1012,24 +1021,24 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_655d386366c527a213b377f648efacdf/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_9c4d76114af67722bc39d061578e0ffa/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_655d386366c527a213b377f648efacdf/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_9c4d76114af67722bc39d061578e0ffa/testbuild/test.cpp.1.o']
 err: ../test.cpp:1:26: fatal error: sys/inttypes.h: No such file or directory
 compilation terminated.
 
-from /home/arnab/ns-3-dev/src/core: Test does not build: Traceback (most recent call last):
-  File "/home/arnab/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src/core: Test does not build: Traceback (most recent call last):
+  File "/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Configure.py", line 335, in run_build
     bld.compile()
-  File "/home/arnab/ns-3-dev/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
+  File "/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/.waf-1.8.19-b1fc8f7baef51bd2db4c2971909a568d/waflib/Build.py", line 185, in compile
     raise Errors.BuildError(self.producer.error)
 BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140164529277840: cxx test.cpp -> test.cpp.1.o}
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_655d386366c527a213b377f648efacdf/testbuild/test.cpp.1.o']
+	{task 140049380954768: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_9c4d76114af67722bc39d061578e0ffa/testbuild/test.cpp.1.o']
 
 not found
-from /home/arnab/ns-3-dev/src/core: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src/core: The configuration failed
 ------------------------------------------------------
 Checking for library rt
 ==>
@@ -1040,12 +1049,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_1b5b43036176e332e73e59941a1b56e1/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_f807febd13fa424a46f77eff68b1f4e6/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_1b5b43036176e332e73e59941a1b56e1/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_1b5b43036176e332e73e59941a1b56e1/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-pthread', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE___UINT128_T=1', '-DINT64X64_USE_128=1', '-DHAVE_SYS_TYPES_H=1', '-DHAVE_SYS_STAT_H=1', '-DHAVE_DIRENT_H=1', '-DHAVE_STDLIB_H=1', '-DHAVE_GETENV=1', '-DHAVE_SIGNAL_H=1', '-DHAVE_PTHREAD_H=1', '-DHAVE_STDINT_H=1', '-DHAVE_INTTYPES_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_f807febd13fa424a46f77eff68b1f4e6/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_f807febd13fa424a46f77eff68b1f4e6/testbuild/testprog[0m
 
-['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_1b5b43036176e332e73e59941a1b56e1/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lrt']
+['/usr/bin/g++', '-pthread', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_f807febd13fa424a46f77eff68b1f4e6/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lrt']
 yes
 ------------------------------------------------------
 Checking for header sys/ioctl.h
@@ -1058,12 +1067,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_5fab02154b135fba0f393b89919b4b8b/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_1d94e59c347212ff4a53a65090e8bba5/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_5fab02154b135fba0f393b89919b4b8b/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_5fab02154b135fba0f393b89919b4b8b/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_1d94e59c347212ff4a53a65090e8bba5/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_1d94e59c347212ff4a53a65090e8bba5/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_5fab02154b135fba0f393b89919b4b8b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_1d94e59c347212ff4a53a65090e8bba5/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header net/if.h
@@ -1076,12 +1085,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_7aaef34422899654af60b39d1d53f75e/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_b942124166688d20ccb66641bc5c5a82/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_7aaef34422899654af60b39d1d53f75e/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_7aaef34422899654af60b39d1d53f75e/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_b942124166688d20ccb66641bc5c5a82/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_b942124166688d20ccb66641bc5c5a82/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_7aaef34422899654af60b39d1d53f75e/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_b942124166688d20ccb66641bc5c5a82/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header net/ethernet.h
@@ -1094,12 +1103,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_d2b97347411e22fca892d63824579cde/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_70e82e6eb024914bc854b71821ec7004/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_d2b97347411e22fca892d63824579cde/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_d2b97347411e22fca892d63824579cde/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_70e82e6eb024914bc854b71821ec7004/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_70e82e6eb024914bc854b71821ec7004/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_d2b97347411e22fca892d63824579cde/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_70e82e6eb024914bc854b71821ec7004/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header linux/if_tun.h
@@ -1112,12 +1121,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_c95a5ced7da26ca779d2a2b3296526dc/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_db39f98f5102a7323565c9a2887bc974/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_c95a5ced7da26ca779d2a2b3296526dc/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_c95a5ced7da26ca779d2a2b3296526dc/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_db39f98f5102a7323565c9a2887bc974/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_db39f98f5102a7323565c9a2887bc974/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_c95a5ced7da26ca779d2a2b3296526dc/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_db39f98f5102a7323565c9a2887bc974/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for header netpacket/packet.h
@@ -1130,12 +1139,12 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_fe993958eaad868f86c73bffc43cec7b/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_e682c0299a7ad52acb30e84223e9bf88/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_fe993958eaad868f86c73bffc43cec7b/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_fe993958eaad868f86c73bffc43cec7b/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_e682c0299a7ad52acb30e84223e9bf88/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_e682c0299a7ad52acb30e84223e9bf88/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_fe993958eaad868f86c73bffc43cec7b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_e682c0299a7ad52acb30e84223e9bf88/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 ------------------------------------------------------
 Checking for NSC location
@@ -1149,7 +1158,7 @@ to the PKG_CONFIG_PATH environment variable
 No package 'sqlite3' found
 
 not found
-from /home/arnab/ns-3-dev/src/stats: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/src/stats: The configuration failed
 ------------------------------------------------------
 Checking for header linux/if_tun.h
 ==>
@@ -1161,22 +1170,22 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_c95a5ced7da26ca779d2a2b3296526dc/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_db39f98f5102a7323565c9a2887bc974/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_c95a5ced7da26ca779d2a2b3296526dc/testbuild/test.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_c95a5ced7da26ca779d2a2b3296526dc/testbuild/testprog[0m
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_db39f98f5102a7323565c9a2887bc974/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_db39f98f5102a7323565c9a2887bc974/testbuild/testprog[0m
 
-['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/ns-3-dev/build/.conf_check_c95a5ced7da26ca779d2a2b3296526dc/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_db39f98f5102a7323565c9a2887bc974/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
 (tool boost is already loaded, skipping)
 ------------------------------------------------------
 Checking boost includes
 headers not found, please provide a --boost-includes argument (see help)
-from /home/arnab/ns-3-dev/contrib: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/contrib: The configuration failed
 ------------------------------------------------------
 Checking boost includes
 headers not found, please provide a --boost-includes argument (see help)
-from /home/arnab/ns-3-dev/contrib: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/contrib: The configuration failed
 ------------------------------------------------------
 Checking for program 'sudo'
 /usr/bin/sudo
@@ -1185,7 +1194,7 @@ find program=['sudo'] paths=['/home/arnab/bin', '/home/arnab/.local/bin', '/usr/
 Checking for program 'valgrind'
 not found
 find program=['valgrind'] paths=['/home/arnab/bin', '/home/arnab/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='VALGRIND' -> None
-from /home/arnab/ns-3-dev: Could not find the program ['valgrind']
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3: Could not find the program ['valgrind']
 ------------------------------------------------------
 Checking for 'gsl'
 ['/usr/bin/pkg-config', '--cflags', '--libs', 'gsl']
@@ -1195,68 +1204,68 @@ to the PKG_CONFIG_PATH environment variable
 No package 'gsl' found
 
 not found
-from /home/arnab/ns-3-dev: The configuration failed
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3: The configuration failed
 ------------------------------------------------------
 python-config
 not found
 find program=['libgcrypt-config'] paths=['/home/arnab/bin', '/home/arnab/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='LIBGCRYPT_CONFIG' -> None
-from /home/arnab/ns-3-dev: Could not find the program ['libgcrypt-config']
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3: Could not find the program ['libgcrypt-config']
 ----------------------------------------------------------------
 Checking for compilation flag -Wno-error=deprecated-d... support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_058898a2ee7cc1fb706409491fe11e5a/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_4c0ae67cda1989fcf484adf277fe048f/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_058898a2ee7cc1fb706409491fe11e5a/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_4c0ae67cda1989fcf484adf277fe048f/testbuild/test.cpp.1.o']
 ok
 ----------------------------------------------------------------
 Checking for compilation flag -Wno-error=deprecated-d... support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_d06426dcfb0cc4ebb0e5fed9b02d6ec1/test.c[0m
+[1/1] Compiling [32mbuild/.conf_check_b9f0c36be6f165c93cbfdeb3c730e5ac/test.c[0m
 
-['/usr/bin/gcc', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_d06426dcfb0cc4ebb0e5fed9b02d6ec1/testbuild/test.c.1.o']
+['/usr/bin/gcc', '-Wno-error=deprecated-declarations', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_b9f0c36be6f165c93cbfdeb3c730e5ac/testbuild/test.c.1.o']
 ok
 ----------------------------------------------------------------
 Checking for compilation flag -fstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_058898a2ee7cc1fb706409491fe11e5a/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_4c0ae67cda1989fcf484adf277fe048f/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_058898a2ee7cc1fb706409491fe11e5a/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_4c0ae67cda1989fcf484adf277fe048f/testbuild/test.cpp.1.o']
 ok
 ----------------------------------------------------------------
 Checking for compilation flag -fstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_d06426dcfb0cc4ebb0e5fed9b02d6ec1/test.c[0m
+[1/1] Compiling [32mbuild/.conf_check_b9f0c36be6f165c93cbfdeb3c730e5ac/test.c[0m
 
-['/usr/bin/gcc', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_d06426dcfb0cc4ebb0e5fed9b02d6ec1/testbuild/test.c.1.o']
+['/usr/bin/gcc', '-fstrict-aliasing', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_b9f0c36be6f165c93cbfdeb3c730e5ac/testbuild/test.c.1.o']
 ok
 ----------------------------------------------------------------
 Checking for compilation flag -Wstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_058898a2ee7cc1fb706409491fe11e5a/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_4c0ae67cda1989fcf484adf277fe048f/test.cpp[0m
 
-['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_058898a2ee7cc1fb706409491fe11e5a/testbuild/test.cpp.1.o']
+['/usr/bin/g++', '-O3', '-g', '-Wall', '-Werror', '-march=native', '-fstrict-overflow', '-Wstrict-overflow=2', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.cpp', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_4c0ae67cda1989fcf484adf277fe048f/testbuild/test.cpp.1.o']
 ok
 ----------------------------------------------------------------
 Checking for compilation flag -Wstrict-aliasing support
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_d06426dcfb0cc4ebb0e5fed9b02d6ec1/test.c[0m
+[1/1] Compiling [32mbuild/.conf_check_b9f0c36be6f165c93cbfdeb3c730e5ac/test.c[0m
 
-['/usr/bin/gcc', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_DEBUG', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/arnab/ns-3-dev/build/.conf_check_d06426dcfb0cc4ebb0e5fed9b02d6ec1/testbuild/test.c.1.o']
+['/usr/bin/gcc', '-Wstrict-aliasing', '-DNS3_BUILD_PROFILE_OPTIMIZED', '-DHAVE_SYS_IOCTL_H=1', '-DHAVE_IF_NETS_H=1', '-DHAVE_NET_ETHERNET_H=1', '-DHAVE_PACKET_H=1', '-DHAVE_IF_TUN_H=1', '../test.c', '-c', '-o', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/.conf_check_b9f0c36be6f165c93cbfdeb3c730e5ac/testbuild/test.c.1.o']
 ok
 ----------------------------------------------------------------
 Checking for program 'doxygen'
 not found
 find program=['doxygen'] paths=['/home/arnab/bin', '/home/arnab/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/snap/bin'] var='DOXYGEN' -> None
-from /home/arnab/ns-3-dev: Could not find the program ['doxygen']
+from /home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3: Could not find the program ['doxygen']
