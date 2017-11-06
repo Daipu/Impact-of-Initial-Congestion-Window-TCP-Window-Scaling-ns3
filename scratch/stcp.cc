@@ -41,29 +41,27 @@ CwndChange (uint32_t oldCwnd, uint32_t newCwnd)
   NS_LOG_UNCOND (Simulator::Now ().GetSeconds () << "\t" << newCwnd);
 }*/
 
-Ptr<OutputStreamWrapper> cWndStream;
-// cwnd tracer
-static void
-CwndTracer (uint32_t oldval, uint32_t newval)
+Ptr<OutputStreamWrapper> strm;
+
+static void 
+CwndChange (uint32_t oldCwnd, uint32_t newCwnd)
 {
-  *cWndStream->GetStream () << Simulator::Now ().GetSeconds () << " " << newval << std::endl;
-  std::cout << "aa" << std::endl;
+  *strm->GetStream () << Simulator::Now ().GetSeconds () << " " << newCwnd << std::endl;
 }
 
 static void
-TraceCwnd (std::string cwnd_tr_file_name)
+TraceCwnd ()
 {
   AsciiTraceHelper ascii;
-  cWndStream = ascii.CreateFileStream (cwnd_tr_file_name.c_str ());
-  // trace congestion window of socket 0 only
-  Config::ConnectWithoutContext ("/NodeList/0/$ns3::TcpL4Protocol/SocketList/0/CongestionWindow", MakeCallback (&CwndTracer));
+  strm = ascii.CreateFileStream ("tcp-flow.dat");
+  Config::ConnectWithoutContext ("/NodeList/0/$ns3::TcpL4Protocol/SocketList/0/CongestionWindow", MakeCallback (&CwndChange));
 }
 
 int
 main (int argc, char *argv[])
 {
 
-  bool tracing = false;
+  //bool tracing = false;
   uint32_t maxBytes = 0;
 
 //
@@ -71,7 +69,7 @@ main (int argc, char *argv[])
 // run-time, via command-line arguments
 //
   CommandLine cmd;
-  cmd.AddValue ("tracing", "Flag to enable/disable tracing", tracing);
+  //cmd.AddValue ("tracing", "Flag to enable/disable tracing", tracing);
   cmd.AddValue ("maxBytes",
                 "Total number of bytes for application to send", maxBytes);
   cmd.Parse (argc, argv);
@@ -104,6 +102,10 @@ main (int argc, char *argv[])
 //
 // We've got the "hardware" in place.  Now we need to add IP addresses.
 //
+
+  Config::SetDefault("ns3::TcpSocket::InitialCwnd", UintegerValue(4));
+  Config::SetDefault("ns3::TcpSocketBase::WindowScaling", BooleanValue(false));
+  
   NS_LOG_INFO ("Assign IP Addresses.");
   Ipv4AddressHelper ipv4;
   ipv4.SetBase ("10.1.1.0", "255.255.255.0");
@@ -122,6 +124,11 @@ main (int argc, char *argv[])
   // Set the amount of data to send in bytes.  Zero is unlimited.
   source.SetAttribute ("MaxBytes", UintegerValue (maxBytes));
   ApplicationContainer sourceApps = source.Install (nodes.Get (0));
+  Ptr<BulkSendApplication> source1 = DynamicCast<BulkSendApplication> (sourceApps.Get(0));
+  
+  /*Ptr<Socket> sck = source1->GetSocket();
+  sck->TraceConnectWithoutContext ("CongestionWindow", MakeCallback (&CwndChange));*/
+  
   sourceApps.Start (Seconds (0.0));
   sourceApps.Stop (Seconds (10.0));
   
@@ -134,11 +141,14 @@ main (int argc, char *argv[])
   sinkApps.Start (Seconds (0.0));
   sinkApps.Stop (Seconds (10.0));
 
+  
+  Simulator::Schedule(Seconds(0.00001),&TraceCwnd);
+
+
 //
 // Now, do the actual simulation.
 //
   NS_LOG_INFO ("Run Simulation.");
-  Simulator::Schedule (Seconds (0.00001), &TraceCwnd, "trace-cwnd.data");
   Simulator::Stop (Seconds (10.0));
   Simulator::Run ();
   Simulator::Destroy ();
