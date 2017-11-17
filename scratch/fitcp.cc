@@ -55,6 +55,14 @@ int main (int argc, char *argv[])
 	uint32_t maxBytes = 0;
 	char topology = 'S';
 	uint32_t leaf = 5;
+	std::string link_bandwidth = "2Mbps";
+	std::string host_bandwidth = "1Gbps";
+	std::string link_delay = "50ms";
+	std::string host_delay = "5ms";
+	float duration = 10;
+	bool en_sack = true;
+	bool wnd_scaling = true;
+	uint32_t init_cw = 1;
 	//
 	// Allow the user to override any of the defaults at
 	// run-time, via command-line arguments
@@ -64,23 +72,35 @@ int main (int argc, char *argv[])
   cmd.AddValue ("leafNodes", "If Dumbbell, number of leaf nodes", leaf);
   cmd.AddValue ("maxBytes",
                 "Total number of bytes for application to send", maxBytes);
+  cmd.AddValue ("Link_bandwidth", "Bandwidth of router-router link", link_bandwidth);
+  cmd.AddValue ("Link_delay", "Delay of router-router link", link_delay);
+  cmd.AddValue ("Host_bandwidth", "Bandwidth of point to point link", host_bandwidth);
+  cmd.AddValue ("Host_delay", "Delay of point to point link", host_delay);
+  cmd.AddValue ("duration", "Time to allow flows to run in seconds", duration);
+	cmd.AddValue ("sack", "Enable or disable SACK option", en_sack);
+	cmd.AddValue ("wnd_scaling", "Enable or disable Window Scaling option", wnd_scaling);
+	cmd.AddValue ("InitCwnd", "Size in packets for Initial Congestion Window", init_cw);
   cmd.Parse (argc, argv);
   
   ApplicationContainer sinkApps;
   uint16_t sinkPort = 9001;
   InternetStackHelper stack;
   
-  Config::SetDefault("ns3::TcpSocket::InitialCwnd", UintegerValue(4));
-  Config::SetDefault("ns3::TcpSocketBase::WindowScaling", BooleanValue(false));
+  float start_time = 1.0;
+  float stop_time = start_time + duration;
+  
+  Config::SetDefault("ns3::TcpSocket::InitialCwnd", UintegerValue(init_cw));
+  Config::SetDefault("ns3::TcpSocketBase::WindowScaling", BooleanValue(wnd_scaling));
+  Config::SetDefault ("ns3::TcpSocketBase::Sack", BooleanValue (en_sack));
   
   if(topology == 'S')
   {
   	//
 		// Explicitly create the nodes required by the topology (shown above).
 		//
-		
-		leaf = 1;
-		
+
+	leaf = 1; //This will be useful when printing bytes received at end	
+	
   	NS_LOG_INFO ("Create nodes.");
   	NodeContainer nodes;
   	nodes.Create (2);
@@ -91,8 +111,8 @@ int main (int argc, char *argv[])
 		// Explicitly create the point-to-point link required by the topology (shown above).
 		//
   	PointToPointHelper pointToPoint;
-  	pointToPoint.SetDeviceAttribute ("DataRate", StringValue ("500Kbps"));
-  	pointToPoint.SetChannelAttribute ("Delay", StringValue ("5ms"));
+  	pointToPoint.SetDeviceAttribute ("DataRate", StringValue (host_bandwidth));
+  	pointToPoint.SetChannelAttribute ("Delay", StringValue (host_delay));
 
   	NetDeviceContainer devices;
   	devices = pointToPoint.Install (nodes);
@@ -128,8 +148,8 @@ int main (int argc, char *argv[])
   	/*Ptr<Socket> sck = source1->GetSocket();
   	sck->TraceConnectWithoutContext ("CongestionWindow", MakeCallback (&CwndChange));*/
   
-  	sourceApps.Start (Seconds (0.0));
-  	sourceApps.Stop (Seconds (10.0));
+  	sourceApps.Start (Seconds (start_time));
+  	sourceApps.Stop (Seconds (stop_time - 1));
   
 		//
 		// Create a PacketSinkApplication and install it on node 1
@@ -137,25 +157,26 @@ int main (int argc, char *argv[])
   	PacketSinkHelper sink ("ns3::TcpSocketFactory",
                          InetSocketAddress (Ipv4Address::GetAny (), sinkPort));
   	/*ApplicationContainer */sinkApps = sink.Install (nodes.Get (1));
-  	sinkApps.Start (Seconds (0.0));
-  	sinkApps.Stop (Seconds (10.0));
+  	sinkApps.Start (Seconds (start_time));
+  	sinkApps.Stop (Seconds (stop_time));
 
   	//Simulator::Schedule(Seconds(0.00001),&TraceRtt);
   	Simulator::Schedule(Seconds(0.00001),&TraceCwnd);
   }
   else
   {
-  	// Create the point-to-point link helpers
-		PointToPointHelper pointToPointRouter;
-  	pointToPointRouter.SetDeviceAttribute  ("DataRate", StringValue ("5Mbps"));
-  	pointToPointRouter.SetChannelAttribute ("Delay", StringValue ("5ms"));
+  	// Create the point-to-point link helpers	
+
+	PointToPointHelper pointToPointRouter;
+  	pointToPointRouter.SetDeviceAttribute  ("DataRate", StringValue (link_bandwidth));
+  	pointToPointRouter.SetChannelAttribute ("Delay", StringValue (link_delay));
   	PointToPointHelper pointToPointLeaf;
-  	pointToPointLeaf.SetDeviceAttribute    ("DataRate", StringValue ("10Mbps"));
-  	pointToPointLeaf.SetChannelAttribute   ("Delay", StringValue ("1ms"));
+  	pointToPointLeaf.SetDeviceAttribute    ("DataRate", StringValue (host_bandwidth));
+  	pointToPointLeaf.SetChannelAttribute   ("Delay", StringValue (host_delay));
   
   	PointToPointDumbbellHelper d (leaf, pointToPointLeaf, leaf, pointToPointLeaf, pointToPointRouter);
 
-		// Install Stack
+	// Install Stack
   	d.InstallStack (stack);
   
   	NS_LOG_INFO ("Assign IP Addresses.");
@@ -176,11 +197,11 @@ int main (int argc, char *argv[])
   	{
   		sinkApps.Add (packetSinkHelper.Install (d.GetRight (i))); //n5-n9 as sink
   	}
-  	sinkApps.Start (Seconds (0.0));
-  	sinkApps.Stop (Seconds (10.0));
+  	sinkApps.Start (Seconds (start_time));
+  	sinkApps.Stop (Seconds (stop_time - 1));
   
   	//Address sinkAddress (InetSocketAddress (d.GetRightIpv4Address (0), sinkPort));
-  	BulkSendHelper source ("ns3::TcpSocketFactory", sinkAddress);
+  	BulkSendHelper source ("ns3::TcpSocketFactory", Address());
   	// Set the amount of data to send in bytes.  Zero is unlimited.
   	source.SetAttribute ("MaxBytes", UintegerValue (maxBytes));
   	ApplicationContainer sourceApps/* = source.Install (d.GetLeft (0))*/;
@@ -191,11 +212,11 @@ int main (int argc, char *argv[])
   		sourceApps.Add (source.Install (d.GetLeft (i)));
   	}
     
-  	sourceApps.Start (Seconds (1.0));
-  	sourceApps.Stop (Seconds (10.0));
+  	sourceApps.Start (Seconds (start_time));
+  	sourceApps.Stop (Seconds (stop_time));
   }
   NS_LOG_INFO ("Run Simulation.");
-  Simulator::Stop (Seconds (10.0));
+  Simulator::Stop (Seconds (stop_time));
   Simulator::Run ();
   Simulator::Destroy ();
   NS_LOG_INFO ("Done.");
