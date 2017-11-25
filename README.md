@@ -12,7 +12,9 @@ The original TCP specification allocated 16 bits for advertising the receive win
 
 This repository provides an implementation of a point-to-point and dumbbell topology and showcases effect of initial congestion window and window scaling on them.
 
-example program is stored in:
+###Initial Congestion Window TCP Window Scaling example
+
+An example program is stored in:
 
 `src/point-to-point/examples/initcwnd-wndscale-example.cc`
 
@@ -29,6 +31,9 @@ All these parameters are optional.
 References
 
 [1] RFC 2581 - TCP Congestion Control. https://tools.ietf.org/html/rfc2581
+
 [2] RFC 6928 - Increasing TCP's Initial Window. https://tools.ietf.org/html/rfc6928
+
 [3] RFC 1323 - TCP Extensions for High Performance. https://tools.ietf.org/html/rfc1323
+
 [4] http://www.nsnam.org/
