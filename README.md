@@ -12,7 +12,7 @@ The original TCP specification allocated 16 bits for advertising the receive win
 
 This repository provides an implementation of a point-to-point and dumbbell topology and showcases effect of initial congestion window and window scaling on them.
 
-###Initial Congestion Window TCP Window Scaling example
+### Initial Congestion Window TCP Window Scaling example
 
 An example program is stored in:
 
