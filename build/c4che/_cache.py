@@ -14,6 +14,7 @@ CC_NAME = 'gcc'
 CC_SRC_F = []
 CC_TGT_F = ['-c', '-o']
 CC_VERSION = ('5', '4', '0')
+CFLAGS_GTK2 = ['-pthread']
 CFLAGS_MACBUNDLE = ['-fPIC']
 CFLAGS_PYEMBED = ['-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-fno-strict-aliasing']
 CFLAGS_PYEXT = ['-pthread', '-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-fno-strict-aliasing']
@@ -24,6 +25,7 @@ CPPPATH_ST = '-I%s'
 CXX = ['/usr/bin/g++']
 CXXDEFINES = ['_DEBUG']
 CXXFLAGS = ['-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-std=c++11', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing']
+CXXFLAGS_GTK2 = ['-pthread']
 CXXFLAGS_MACBUNDLE = ['-fPIC']
 CXXFLAGS_PTHREAD = '-pthread'
 CXXFLAGS_PYEMBED = ['-fno-strict-aliasing', '-fwrapv', '-fstack-protector-strong', '-fno-strict-aliasing']
@@ -37,6 +39,7 @@ CXX_TGT_F = ['-c', '-o']
 DATADIR = '/usr/local/share'
 DATAROOTDIR = '/usr/local/share'
 DEFINES = ['NS3_BUILD_PROFILE_DEBUG', 'NS3_ASSERT_ENABLE', 'NS3_LOG_ENABLE', 'HAVE_SYS_IOCTL_H=1', 'HAVE_IF_NETS_H=1', 'HAVE_NET_ETHERNET_H=1', 'HAVE_PACKET_H=1', 'HAVE_IF_TUN_H=1']
+DEFINES_GTK2 = ['HAVE_GTK2=1']
 DEFINES_PYEMBED = ['NDEBUG', '_FORTIFY_SOURCE=2']
 DEFINES_PYEXT = ['NDEBUG', '_FORTIFY_SOURCE=2', 'NDEBUG', '_FORTIFY_SOURCE=2']
 DEFINES_ST = '-D%s'
@@ -48,10 +51,10 @@ DOCDIR = '/usr/local/share/doc/ns'
 DVIDIR = '/usr/local/share/doc/ns'
 ENABLE_BRITE = False
 ENABLE_EMU = True
-ENABLE_EXAMPLES = False
+ENABLE_EXAMPLES = True
 ENABLE_FDNETDEV = True
 ENABLE_GSL = None
-ENABLE_GTK2 = None
+ENABLE_GTK2 = '-pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype\n'
 ENABLE_LIBXML2 = None
 ENABLE_NSC = False
 ENABLE_PYTHON_BINDINGS = False
@@ -60,12 +63,14 @@ ENABLE_REAL_TIME = True
 ENABLE_STATIC_NS3 = False
 ENABLE_SUDO = False
 ENABLE_TAP = True
-ENABLE_TESTS = True
+ENABLE_TESTS = False
 ENABLE_THREADING = True
 EXAMPLE_DIRECTORIES = ['traffic-control', 'energy', 'matrix-topology', 'naming', 'realtime', 'udp-client-server', 'wireless', 'udp', 'socket', 'routing', 'tcp', 'tutorial', 'stats', 'error-model', 'ipv6']
 EXEC_PREFIX = '/usr/local'
+HAVE_GTK2 = 1
 HTMLDIR = '/usr/local/share/doc/ns'
 INCLUDEDIR = '/usr/local/include'
+INCLUDES_GTK2 = ['/usr/include/gtk-2.0', '/usr/lib/x86_64-linux-gnu/gtk-2.0/include', '/usr/include/gio-unix-2.0/', '/usr/include/cairo', '/usr/include/pango-1.0', '/usr/include/atk-1.0', '/usr/include/pixman-1', '/usr/include/libpng12', '/usr/include/gdk-pixbuf-2.0', '/usr/include/harfbuzz', '/usr/include/glib-2.0', '/usr/lib/x86_64-linux-gnu/glib-2.0/include', '/usr/include/freetype2']
 INCLUDES_PYEMBED = ['/usr/include/python2.7']
 INCLUDES_PYEXT = ['/usr/include/python2.7']
 INFODIR = '/usr/local/share/info'
@@ -77,11 +82,13 @@ LIBPATH_PYEXT = ['/usr/lib/python2.7/config-x86_64-linux-gnu']
 LIBPATH_PYTHON2.7 = ['/usr/lib/python2.7/config-x86_64-linux-gnu']
 LIBPATH_ST = '-L%s'
 LIB_BOOST = []
+LIB_GTK2 = ['gtk-x11-2.0', 'gdk-x11-2.0', 'pangocairo-1.0', 'atk-1.0', 'cairo', 'gdk_pixbuf-2.0', 'gio-2.0', 'pangoft2-1.0', 'pango-1.0', 'gobject-2.0', 'glib-2.0', 'fontconfig', 'freetype']
 LIB_PYEMBED = ['python2.7']
 LIB_PYEXT = ['python2.7']
 LIB_PYTHON2.7 = ['python2.7']
 LIB_RT = ['rt']
 LIB_ST = '-l%s'
+LINKFLAGS_GTK2 = ['-pthread']
 LINKFLAGS_MACBUNDLE = ['-bundle', '-undefined', 'dynamic_lookup']
 LINKFLAGS_PTHREAD = '-pthread'
 LINKFLAGS_PYEMBED = ['-Wl,-Bsymbolic-functions', '-Wl,-z,relro']
@@ -102,7 +109,7 @@ NS3_ENABLED_MODULES = ['ns3-antenna', 'ns3-aodv', 'ns3-applications', 'ns3-bridg
 NS3_EXECUTABLE_PATH = ['/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/src/fd-net-device', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build/src/tap-bridge']
 NS3_MODULES = ['ns3-antenna', 'ns3-aodv', 'ns3-applications', 'ns3-bridge', 'ns3-buildings', 'ns3-config-store', 'ns3-core', 'ns3-csma', 'ns3-csma-layout', 'ns3-dsdv', 'ns3-dsr', 'ns3-energy', 'ns3-fd-net-device', 'ns3-flow-monitor', 'ns3-internet', 'ns3-internet-apps', 'ns3-lr-wpan', 'ns3-lte', 'ns3-mesh', 'ns3-mobility', 'ns3-mpi', 'ns3-netanim', 'ns3-network', 'ns3-nix-vector-routing', 'ns3-olsr', 'ns3-point-to-point', 'ns3-point-to-point-layout', 'ns3-propagation', 'ns3-sixlowpan', 'ns3-spectrum', 'ns3-stats', 'ns3-tap-bridge', 'ns3-test', 'ns3-topology-read', 'ns3-traffic-control', 'ns3-uan', 'ns3-virtual-net-device', 'ns3-wave', 'ns3-wifi', 'ns3-wimax']
 NS3_MODULE_PATH = ['/usr/lib/gcc/x86_64-linux-gnu/5', '/home/arnab/Impact-of-Initial-Congestion-Window-TCP-Window-Scaling-ns3/build']
-NS3_OPTIONAL_FEATURES = [('python', 'Python Bindings', False, 'Python library or headers missing'), ('brite', 'BRITE Integration', False, 'BRITE not enabled (see option --with-brite)'), ('nsclick', 'NS-3 Click Integration', False, 'nsclick not enabled (see option --with-nsclick)'), ('GtkConfigStore', 'GtkConfigStore', [], "library 'gtk+-2.0 >= 2.12' not found"), ('XmlIo', 'XmlIo', [], "library 'libxml-2.0 >= 2.7' not found"), ('Threading', 'Threading Primitives', True, '<pthread.h> include not detected'), ('RealTime', 'Real Time Simulator', True, 'threading not enabled'), ('FdNetDevice', 'File descriptor NetDevice', True, 'FdNetDevice module enabled'), ('TapFdNetDevice', 'Tap FdNetDevice', True, 'Tap support enabled'), ('EmuFdNetDevice', 'Emulation FdNetDevice', True, 'Emulation support enabled'), ('PlanetLabFdNetDevice', 'PlanetLab FdNetDevice', False, 'PlanetLab operating system not detected (see option --force-planetlab)'), ('nsc', 'Network Simulation Cradle', False, 'NSC not found (see option --with-nsc)'), ('mpi', 'MPI Support', False, 'option --enable-mpi not selected'), ('openflow', 'NS-3 OpenFlow Integration', False, 'Required boost libraries not found'), ('SqliteDataOutput', 'SQlite stats data output', [], "library 'sqlite3' not found"), ('TapBridge', 'Tap Bridge', True, '<linux/if_tun.h> include not detected'), ('PyViz', 'PyViz visualizer', False, 'Python Bindings are needed but not enabled'), ('ENABLE_SUDO', 'Use sudo to set suid bit', False, 'option --enable-sudo not selected'), ('ENABLE_TESTS', 'Tests', True, 'option --enable-tests selected'), ('ENABLE_EXAMPLES', 'Examples', False, 'defaults to disabled'), ('GSL', 'GNU Scientific Library (GSL)', [], 'GSL not found'), ('libgcrypt', 'Gcrypt library', [], 'libgcrypt not found: you can use libgcrypt-config to find its location.'), ('DES Metrics', 'DES Metrics event collection', [], 'defaults to disabled')]
+NS3_OPTIONAL_FEATURES = [('python', 'Python Bindings', False, 'Python library or headers missing'), ('brite', 'BRITE Integration', False, 'BRITE not enabled (see option --with-brite)'), ('nsclick', 'NS-3 Click Integration', False, 'nsclick not enabled (see option --with-nsclick)'), ('GtkConfigStore', 'GtkConfigStore', '-pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype\n', "library 'gtk+-2.0 >= 2.12' not found"), ('XmlIo', 'XmlIo', [], "library 'libxml-2.0 >= 2.7' not found"), ('Threading', 'Threading Primitives', True, '<pthread.h> include not detected'), ('RealTime', 'Real Time Simulator', True, 'threading not enabled'), ('FdNetDevice', 'File descriptor NetDevice', True, 'FdNetDevice module enabled'), ('TapFdNetDevice', 'Tap FdNetDevice', True, 'Tap support enabled'), ('EmuFdNetDevice', 'Emulation FdNetDevice', True, 'Emulation support enabled'), ('PlanetLabFdNetDevice', 'PlanetLab FdNetDevice', False, 'PlanetLab operating system not detected (see option --force-planetlab)'), ('nsc', 'Network Simulation Cradle', False, 'NSC not found (see option --with-nsc)'), ('mpi', 'MPI Support', False, 'option --enable-mpi not selected'), ('openflow', 'NS-3 OpenFlow Integration', False, 'Required boost libraries not found'), ('SqliteDataOutput', 'SQlite stats data output', [], "library 'sqlite3' not found"), ('TapBridge', 'Tap Bridge', True, '<linux/if_tun.h> include not detected'), ('PyViz', 'PyViz visualizer', False, 'Python Bindings are needed but not enabled'), ('ENABLE_SUDO', 'Use sudo to set suid bit', False, 'option --enable-sudo not selected'), ('ENABLE_TESTS', 'Tests', False, 'defaults to disabled'), ('ENABLE_EXAMPLES', 'Examples', True, 'option --enable-examples selected'), ('GSL', 'GNU Scientific Library (GSL)', [], 'GSL not found'), ('libgcrypt', 'Gcrypt library', [], 'libgcrypt not found: you can use libgcrypt-config to find its location.'), ('DES Metrics', 'DES Metrics event collection', [], 'defaults to disabled')]
 OLDINCLUDEDIR = '/usr/include'
 PACKAGE = 'ns'
 PDFDIR = '/usr/local/share/doc/ns'

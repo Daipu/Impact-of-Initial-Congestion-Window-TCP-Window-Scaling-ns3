@@ -6,3 +6,6 @@ def build(bld):
 
     obj = bld.create_ns3_program('main-attribute-value', ['network', 'point-to-point'])
     obj.source = 'main-attribute-value.cc'
+
+    obj = bld.create_ns3_program('initcwnd-wndscale-example', ['core','network', 'point-to-point', 'applications', 'internet', 'point-to-point-layout'])
+    obj.source = 'initcwnd-wndscale-example.cc'
