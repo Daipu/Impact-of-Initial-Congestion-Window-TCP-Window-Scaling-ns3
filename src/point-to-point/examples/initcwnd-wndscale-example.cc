@@ -60,7 +60,7 @@ int main (int argc, char *argv[])
 	std::string host_bandwidth = "1Gbps";
 	std::string link_delay = "50ms";
 	std::string host_delay = "5ms";
-	float duration = 10;
+	float duration = 4.0;
 	bool en_sack = true;
 	bool wnd_scaling = true;
 	uint32_t init_cw = 1;
@@ -93,14 +93,17 @@ int main (int argc, char *argv[])
   Config::SetDefault("ns3::TcpSocket::InitialCwnd", UintegerValue(init_cw));
   Config::SetDefault("ns3::TcpSocketBase::WindowScaling", BooleanValue(wnd_scaling));
   Config::SetDefault ("ns3::TcpSocketBase::Sack", BooleanValue (en_sack));
+	int tcpSegmentSize = 1000;
+  Config::SetDefault ("ns3::TcpSocket::SegmentSize", UintegerValue (tcpSegmentSize));
+  Config::SetDefault ("ns3::TcpSocket::DelAckCount", UintegerValue (0));
   
   if(topology == 'S')
   {
   	leaf = 1; //This will be useful when printing bytes received at end	
 	
   	NS_LOG_INFO ("Create nodes.");
-  	NodeContainer nodes;
-  	nodes.Create (2);
+  	Ptr<Node> A = CreateObject<Node> ();
+  	Ptr<Node> B = CreateObject<Node> ();
 
   	NS_LOG_INFO ("Create channels.");
 
@@ -112,9 +115,14 @@ int main (int argc, char *argv[])
   	pointToPoint.SetChannelAttribute ("Delay", StringValue (host_delay));
 
   	NetDeviceContainer devices;
-  	devices = pointToPoint.Install (nodes);
+  	devices = pointToPoint.Install (A, B);
 
-	stack.Install (nodes);
+		stack.Install (A);
+		stack.Install (B);
+		
+		Ptr<RateErrorModel> em = CreateObject<RateErrorModel> ();
+  	em->SetAttribute ("ErrorRate", DoubleValue (0.00001));
+  	devices.Get (1)->SetAttribute ("ReceiveErrorModel", PointerValue (em));
 
 	//
 	// We've got the "hardware" in place.  Now we need to add IP addresses.
@@ -124,34 +132,31 @@ int main (int argc, char *argv[])
   	Ipv4AddressHelper ipv4;
   	ipv4.SetBase ("10.1.1.0", "255.255.255.0");
   	Ipv4InterfaceContainer i = ipv4.Assign (devices);
+  	
+  	Ipv4GlobalRoutingHelper::PopulateRoutingTables ();
 
   	NS_LOG_INFO ("Create Applications.");
-
-	//
-	// Create a BulkSendApplication and install it on node 0
-	//
-
-  	BulkSendHelper source ("ns3::TcpSocketFactory",
-                         InetSocketAddress (i.GetAddress (1), sinkPort));
-  	// Set the amount of data to send in bytes.  Zero is unlimited.
-  	source.SetAttribute ("MaxBytes", UintegerValue (maxBytes));
-  	ApplicationContainer sourceApps = source.Install (nodes.Get (0));
-  	Ptr<BulkSendApplication> source1 = DynamicCast<BulkSendApplication> (sourceApps.Get(0));
-  
-  	/*Ptr<Socket> sck = source1->GetSocket();
-  	sck->TraceConnectWithoutContext ("CongestionWindow", MakeCallback (&CwndChange));*/
-  
-  	sourceApps.Start (Seconds (start_time));
-  	sourceApps.Stop (Seconds (stop_time - 1));
-  
+  	
 	//
 	// Create a PacketSinkApplication and install it on node 1
 	//
   	PacketSinkHelper sink ("ns3::TcpSocketFactory",
                          InetSocketAddress (Ipv4Address::GetAny (), sinkPort));
-  	/*ApplicationContainer */sinkApps = sink.Install (nodes.Get (1));
+  	/*ApplicationContainer */sinkApps = sink.Install (B);
   	sinkApps.Start (Seconds (start_time));
   	sinkApps.Stop (Seconds (stop_time));
+  	
+  	ObjectFactory factory;
+  	factory.SetTypeId ("ns3::BulkSendApplication");
+  	factory.Set ("Protocol", StringValue ("ns3::TcpSocketFactory"));
+  	factory.Set ("MaxBytes", UintegerValue (maxBytes));
+  	factory.Set ("SendSize", UintegerValue (tcpSegmentSize));
+  	factory.Set ("Remote", AddressValue(InetSocketAddress(i.GetAddress (1), sinkPort)));
+  	Ptr<Object> bulkSendAppObj = factory.Create();
+  	Ptr<Application> bulkSendApp = bulkSendAppObj -> GetObject<Application>();
+  	bulkSendApp->SetStartTime(Seconds(0.0));
+  	bulkSendApp->SetStopTime(Seconds(stop_time));
+  	A->AddApplication(bulkSendApp);
 
   	//Simulator::Schedule(Seconds(0.00001),&TraceRtt);
   	Simulator::Schedule(Seconds(0.00001),&TraceCwnd);
