@@ -47,7 +47,7 @@ static void
 TraceCwnd ()
 {
   AsciiTraceHelper ascii;
-  strm = ascii.CreateFileStream ("tcp-flow.dat");
+  strm = ascii.CreateFileStream ("xy1.dat");
   Config::ConnectWithoutContext ("/NodeList/0/$ns3::TcpL4Protocol/SocketList/0/CongestionWindow", MakeCallback (&CwndChange));
 }
 
@@ -107,9 +107,9 @@ int main (int argc, char *argv[])
 
   	NS_LOG_INFO ("Create channels.");
 
-	//
-	// Explicitly create the point-to-point link required by the topology (shown above).
-	//
+		//
+		// Explicitly create the point-to-point link required by the topology (shown above).
+		//
   	PointToPointHelper pointToPoint;
   	pointToPoint.SetDeviceAttribute ("DataRate", StringValue (host_bandwidth));
   	pointToPoint.SetChannelAttribute ("Delay", StringValue (host_delay));
@@ -124,10 +124,6 @@ int main (int argc, char *argv[])
   	em->SetAttribute ("ErrorRate", DoubleValue (0.00001));
   	devices.Get (1)->SetAttribute ("ReceiveErrorModel", PointerValue (em));
 
-	//
-	// We've got the "hardware" in place.  Now we need to add IP addresses.
-	//
-
   	NS_LOG_INFO ("Assign IP Addresses.");
   	Ipv4AddressHelper ipv4;
   	ipv4.SetBase ("10.1.1.0", "255.255.255.0");
@@ -137,9 +133,9 @@ int main (int argc, char *argv[])
 
   	NS_LOG_INFO ("Create Applications.");
   	
-	//
-	// Create a PacketSinkApplication and install it on node 1
-	//
+		//
+		// Create a PacketSinkApplication and install it on node 1
+		//
   	PacketSinkHelper sink ("ns3::TcpSocketFactory",
                          InetSocketAddress (Ipv4Address::GetAny (), sinkPort));
   	/*ApplicationContainer */sinkApps = sink.Install (B);
@@ -165,7 +161,7 @@ int main (int argc, char *argv[])
   {
   	// Create the point-to-point link helpers	
 
-	PointToPointHelper pointToPointRouter;
+		PointToPointHelper pointToPointRouter;
   	pointToPointRouter.SetDeviceAttribute  ("DataRate", StringValue (link_bandwidth));
   	pointToPointRouter.SetChannelAttribute ("Delay", StringValue (link_delay));
   	PointToPointHelper pointToPointLeaf;
@@ -174,7 +170,7 @@ int main (int argc, char *argv[])
   
   	PointToPointDumbbellHelper d (leaf, pointToPointLeaf, leaf, pointToPointLeaf, pointToPointRouter);
 
-	// Install Stack
+		// Install Stack
   	d.InstallStack (stack);
   
   	NS_LOG_INFO ("Assign IP Addresses.");
